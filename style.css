@@ -1,0 +1,177 @@
+:root {
+    --bg-color: #121212;
+    --surface-color: #1e1e1e;
+    --primary-color: #3f51b5;
+    --primary-hover-color: #303f9f;
+    --danger-color: #d32f2f;
+    --danger-hover-color: #b71c1c;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #333;
+    --green-light: #66bb6a;
+    --red-light: #ef5350;
+    --road-color: #424242;
+    --line-color: #757575;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1600px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    margin-bottom: 0;
+    font-size: 2.5rem;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 320px 1fr 320px;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.panel {
+    background: var(--surface-color);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.panel h2, .panel h3 {
+    margin-top: 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.control-group {
+    margin-bottom: 25px;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.control-group input, .control-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.rate-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex-grow: 1;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background: var(--primary-hover-color);
+}
+
+button:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+button.danger {
+    background: var(--danger-color);
+}
+button.danger:hover {
+    background: var(--danger-hover-color);
+}
+
+.simulation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#intersection-canvas {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+}
+
+.metrics p, .queue-lengths p {
+    display: flex;
+    justify-content: space-between;
+    background: var(--bg-color);
+    padding: 12px;
+    margin: 0 0 10px 0;
+    border-radius: 4px;
+}
+
+.metrics p strong, .queue-lengths p strong {
+    color: var(--primary-color);
+}
+
+.info-box {
+    background-color: rgba(63, 81, 181, 0.1);
+    border-left: 4px solid var(--primary-color);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    .simulation-container {
+        order: -1; /* Move simulation to the top on smaller screens */
+    }
+}

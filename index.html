@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Signal Optimization Simulation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Traffic Signal Optimization</h1>
+            <p class="subtitle">A comparative study of traffic control algorithms</p>
+        </header>
+
+        <main class="main-content">
+            <div class="panel controls">
+                <h2>Controls</h2>
+                <div class="control-group">
+                    <label for="algorithm-select">Algorithm</label>
+                    <select id="algorithm-select">
+                        <option value="fixed">Fixed Time</option>
+                        <option value="greedy">Greedy Max-Queue</option>
+                        <option value="round-robin">Fair Round Robin</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <h3>Global Settings</h3>
+                    <label for="discharge-rate">Discharge Rate (cars/sec)</label>
+                    <input type="number" id="discharge-rate" value="1.0" step="0.1" min="0.1">
+                    
+                    <label for="min-green-time">Min. Green Time (sec)</label>
+                    <input type="number" id="min-green-time" value="8" step="1" min="1">
+                    
+                    <div id="fixed-time-group">
+                        <label for="fixed-cycle-time">Fixed Green Time (sec)</label>
+                        <input type="number" id="fixed-cycle-time" value="15" step="1" min="1">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>Arrival Rates (cars/sec)</h3>
+                    <div class="rate-inputs">
+                        <label for="north-rate">North</label>
+                        <input type="number" id="north-rate" value="0.3" step="0.1" min="0">
+                        <label for="east-rate">East</label>
+                        <input type="number" id="east-rate" value="0.6" step="0.1" min="0">
+                        <label for="south-rate">South</label>
+                        <input type="number" id="south-rate" value="0.3" step="0.1" min="0">
+                        <label for="west-rate">West</label>
+                        <input type="number" id="west-rate" value="0.6" step="0.1" min="0">
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button id="start-button">Start</button>
+                    <button id="stop-button" disabled>Stop</button>
+                    <button id="reset-button" class="danger">Reset</button>
+                </div>
+
+                <div class="info-box">
+                    For stability, <strong>Discharge Rate</strong> should be higher than a lane's <strong>Arrival Rate</strong>.
+                </div>
+            </div>
+
+            <div class="simulation-container">
+                <canvas id="intersection-canvas" width="600" height="600"></canvas>
+            </div>
+
+            <div class="panel metrics">
+                <h2>Metrics</h2>
+                <div class="metric-group">
+                    <p><span>Simulation Time:</span> <strong id="sim-time">0s</strong></p>
+                    <p><span>Avg. Wait Time:</span> <strong id="avg-wait-time">0.00s</strong></p>
+                    <p><span>Total Throughput:</span> <strong id="total-throughput">0</strong></p>
+                    <p><span>Max Queue Length:</span> <strong id="max-queue-length">0</strong></p>
+                    <p><span>Signal Switches:</span> <strong id="signal-switches">0</strong></p>
+                </div>
+                <div class="queue-lengths">
+                    <h3>Live Queue Lengths</h3>
+                    <p><span>North:</span> <strong id="north-queue">0</strong></p>
+                    <p><span>East:</span> <strong id="east-queue">0</strong></p>
+                    <p><span>South:</span> <strong id="south-queue">0</strong></p>
+                    <p><span>West:</span> <strong id="west-queue">0</strong></p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
