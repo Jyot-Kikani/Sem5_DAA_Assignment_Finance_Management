@@ -1,177 +1,214 @@
+/* --- CSS Variables and Base Styles --- */
 :root {
-    --bg-color: #121212;
-    --surface-color: #1e1e1e;
-    --primary-color: #3f51b5;
-    --primary-hover-color: #303f9f;
-    --danger-color: #d32f2f;
-    --danger-hover-color: #b71c1c;
-    --text-primary: #e0e0e0;
-    --text-secondary: #a0a0a0;
-    --border-color: #333;
-    --green-light: #66bb6a;
-    --red-light: #ef5350;
-    --road-color: #424242;
-    --line-color: #757575;
+    --bg-main: #FDF8F0;
+    --bg-card: #FFFBF5;
+    --primary-green: #A8D8B9;
+    --primary-green-dark: #87C1A2;
+    --text-dark: #4F4A45;
+    --text-light: #6a635e;
+    --border-color: #EFEAE2;
+    --accent-orange: #F7C5A8;
+    --accent-orange-dark: #f5b995;
+    --accent-red: #E8A0A0;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Lato', sans-serif;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    line-height: 1.6;
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-dark);
     margin: 0;
-    padding: 20px;
+    padding: 2rem;
 }
 
-.container {
-    max-width: 1600px;
-    margin: auto;
-    padding: 0 1rem;
+/* --- Typography --- */
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-heading);
+    font-weight: 600;
 }
 
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.75rem; color: var(--primary-green-dark); margin: 0 0 1.5rem 0; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.1rem; color: var(--text-light); margin-top: 1.5rem; }
+
+/* --- Header and Navigation --- */
 header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
 }
-
 header h1 {
-    margin-bottom: 0;
-    font-size: 2.5rem;
+    color: var(--text-dark);
 }
-
-.subtitle {
-    color: var(--text-secondary);
+header p {
+    color: var(--text-light);
     font-size: 1.1rem;
-    margin-top: 5px;
 }
 
-.main-content {
-    display: grid;
-    grid-template-columns: 320px 1fr 320px;
-    gap: 30px;
-    align-items: flex-start;
-}
-
-.panel {
-    background: var(--surface-color);
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-}
-
-.panel h2, .panel h3 {
-    margin-top: 0;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.control-group {
-    margin-bottom: 25px;
-}
-
-.control-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--text-secondary);
-}
-
-.control-group input, .control-group select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-
-.rate-inputs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.button-group {
-    display: flex;
-    gap: 10px;
-}
-
-button {
-    flex-grow: 1;
-    background: var(--primary-color);
-    color: #fff;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: background-color 0.2s;
-}
-
-button:hover {
-    background: var(--primary-hover-color);
-}
-
-button:disabled {
-    background: #555;
-    cursor: not-allowed;
-}
-
-button.danger {
-    background: var(--danger-color);
-}
-button.danger:hover {
-    background: var(--danger-hover-color);
-}
-
-.simulation-container {
+nav {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+nav button {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+    color: var(--text-light);
+    border-radius: 50px; /* Fully rounded pill shape */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+nav button.active, nav button:hover {
+    background-color: var(--primary-green);
+    color: white;
+    box-shadow: 0 6px 15px rgba(168, 216, 185, 0.4);
+    transform: translateY(-2px);
 }
 
-#intersection-canvas {
-    background: var(--bg-color);
-    border: 1px solid var(--border-color);
+/* --- Layout and Cards --- */
+main { max-width: 1400px; margin: 0 auto; }
+.hidden { display: none; }
+
+.card {
+    background-color: var(--bg-card);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px -10px rgba(79, 74, 69, 0.1);
+}
+
+.feature-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+}
+
+.placeholder-text {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+/* --- Forms and Inputs --- */
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { font-weight: 700; display: block; margin-bottom: 0.5rem; }
+
+input[type="text"], input[type="number"], input[type="date"], select {
     width: 100%;
-    max-width: 600px;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(168, 216, 185, 0.3);
 }
 
-.metrics p, .queue-lengths p {
+form { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; margin-bottom: 1rem; }
+form input, form select { flex: 1; }
+.form-instruction { width: 100%; font-weight: 700; margin-bottom: 0.5rem; }
+
+/* Buttons */
+button { border: none; cursor: pointer; border-radius: 12px; transition: all 0.2s ease; font-weight: 600; }
+.btn-add { background-color: var(--primary-green); color: white; padding: 0.8rem 1.2rem; }
+.btn-add:hover { background-color: var(--primary-green-dark); }
+.btn-add.wide { width: 100%; }
+
+.btn-calculate {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: var(--accent-orange);
+    color: white;
+    margin-top: 1.5rem;
+    font-family: var(--font-heading);
+}
+.btn-calculate:hover { background-color: var(--accent-orange-dark); box-shadow: 0 4px 15px rgba(247, 197, 168, 0.5); transform: translateY(-2px); }
+
+/* --- Item Lists --- */
+.item-list, .results-list {
+    list-style: none;
+    padding: 0;
+    max-height: 250px;
+    overflow-y: auto;
+}
+.item-list li, .results-list li {
     display: flex;
     justify-content: space-between;
-    background: var(--bg-color);
-    padding: 12px;
-    margin: 0 0 10px 0;
-    border-radius: 4px;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
 }
-
-.metrics p strong, .queue-lengths p strong {
-    color: var(--primary-color);
+.item-list li button {
+    background-color: var(--accent-red);
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
 }
+.item-list li button:hover { background-color: #d68f8f; }
 
-.info-box {
-    background-color: rgba(63, 81, 181, 0.1);
-    border-left: 4px solid var(--primary-color);
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 4px;
-    font-size: 0.9rem;
+/* --- Debt Simplifier Specifics --- */
+#split-between-members {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 1rem;
 }
+#split-between-members label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--bg-main);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.results-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.list-header { margin-top: 1rem; }
 
-/* Responsive adjustments */
+/* --- D3 Graph Styles --- */
+.graph-container {
+    width: 100%;
+    height: 300px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+#before-graph, #after-graph {
+    width: 100%;
+    height: 100%;
+}
+.links line { stroke: var(--primary-green); stroke-opacity: 0.7; }
+.nodes circle { fill: var(--primary-green); stroke: var(--primary-green-dark); stroke-width: 3px; }
+.nodes text { font-family: var(--font-heading); font-size: 12px; fill: var(--text-dark); pointer-events: none; text-anchor: middle; transform: translateY(28px); }
+.link-label { font-size: 12px; fill: var(--accent-orange-dark); font-weight: 700; text-anchor: middle; }
+#arrowhead-before-graph path, #arrowhead-after-graph path { fill: var(--primary-green); }
+
+/* --- Responsive Design --- */
 @media (max-width: 1200px) {
-    .main-content {
-        grid-template-columns: 1fr;
-    }
-    .simulation-container {
-        order: -1; /* Move simulation to the top on smaller screens */
-    }
+    .feature-container { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+    body { padding: 1rem; }
+    .results-columns { grid-template-columns: 1fr; }
+    nav { flex-direction: column; }
+    form { flex-direction: column; align-items: stretch; }
 }

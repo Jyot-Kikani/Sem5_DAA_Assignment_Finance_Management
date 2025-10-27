@@ -3,93 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traffic Signal Optimization Simulation</title>
+    <title>Smart Personal Finance Manager</title>
+    
+    <!-- Google Fonts Import -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Traffic Signal Optimization</h1>
-            <p class="subtitle">A comparative study of traffic control algorithms</p>
-        </header>
 
-        <main class="main-content">
-            <div class="panel controls">
-                <h2>Controls</h2>
-                <div class="control-group">
-                    <label for="algorithm-select">Algorithm</label>
-                    <select id="algorithm-select">
-                        <option value="fixed">Fixed Time</option>
-                        <option value="greedy">Greedy Max-Queue</option>
-                        <option value="round-robin">Fair Round Robin</option>
-                    </select>
+    <header>
+        <h1>Smart Personal Finance Manager</h1>
+        <p>Your friendly guide to unbiased and efficient financial decisions.</p>
+    </header>
+
+    <nav>
+        <button id="nav-budget" class="active">Monthly Budget Planner</button>
+        <button id="nav-debt">Group Debt Simplifier</button>
+        <button id="nav-savings">Savings Goal Planner</button>
+    </nav>
+
+    <main>
+        <!-- ========= Budget Planner Section ========= -->
+        <section id="budget-planner">
+            <div class="feature-container">
+                <div class="input-panel card">
+                    <h3>Your Financials</h3>
+                    <div class="form-group">
+                        <label for="total-budget">Total Monthly Budget ($)</label>
+                        <input type="number" id="total-budget" placeholder="e.g., 2000">
+                    </div>
+                    <h4>Add Your Expenses</h4>
+                    <form id="expense-form">
+                        <input type="text" id="expense-name" placeholder="Expense Name (e.g., Rent)" required>
+                        <input type="number" id="expense-amount" placeholder="Amount ($)" required>
+                        <input type="number" id="expense-priority" placeholder="Priority (1-10)" min="1" max="10" required>
+                        <button type="submit" class="btn-add">Add</button>
+                    </form>
+                    <ul id="expense-list" class="item-list"></ul>
+                    <button id="calculate-budget" class="btn-calculate">Optimize My Budget</button>
                 </div>
-
-                <div class="control-group">
-                    <h3>Global Settings</h3>
-                    <label for="discharge-rate">Discharge Rate (cars/sec)</label>
-                    <input type="number" id="discharge-rate" value="1.0" step="0.1" min="0.1">
-                    
-                    <label for="min-green-time">Min. Green Time (sec)</label>
-                    <input type="number" id="min-green-time" value="8" step="1" min="1">
-                    
-                    <div id="fixed-time-group">
-                        <label for="fixed-cycle-time">Fixed Green Time (sec)</label>
-                        <input type="number" id="fixed-cycle-time" value="15" step="1" min="1">
+                <div class="output-panel card">
+                    <h3>Optimized Results</h3>
+                    <div id="budget-results">
+                        <p class="placeholder-text">Enter your budget and expenses to see the optimized plan.</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="control-group">
-                    <h3>Arrival Rates (cars/sec)</h3>
-                    <div class="rate-inputs">
-                        <label for="north-rate">North</label>
-                        <input type="number" id="north-rate" value="0.3" step="0.1" min="0">
-                        <label for="east-rate">East</label>
-                        <input type="number" id="east-rate" value="0.6" step="0.1" min="0">
-                        <label for="south-rate">South</label>
-                        <input type="number" id="south-rate" value="0.3" step="0.1" min="0">
-                        <label for="west-rate">West</label>
-                        <input type="number" id="west-rate" value="0.6" step="0.1" min="0">
+        <!-- ========= Debt Simplifier Section (Initially Hidden) ========= -->
+        <section id="debt-simplifier" class="hidden">
+            <div class="feature-container">
+                <div class="input-panel card">
+                    <h3>Group Details</h3>
+                    <form id="member-form">
+                        <input type="text" id="member-name" placeholder="Group Member Name" required>
+                        <button type="submit" class="btn-add">Add</button>
+                    </form>
+                    <ul id="member-list" class="item-list"></ul>
+
+                    <h4>Add Group Transaction</h4>
+                    <form id="transaction-form">
+                        <select id="paid-by-select"></select>
+                        <input type="number" id="transaction-amount" placeholder="Amount ($)" required>
+                        <p class="form-instruction">Split Between:</p>
+                        <div id="split-between-members"></div>
+                        <button type="submit" class="btn-add wide">Add Transaction</button>
+                    </form>
+                    <button id="simplify-debts" class="btn-calculate">Simplify Debts</button>
+                </div>
+                <div class="output-panel card">
+                    <h3>Transaction Visualizations</h3>
+                    <div class="results-columns">
+                        <div id="before-simplification">
+                            <h4>Original Debts</h4>
+                            <div class="graph-container">
+                                <svg id="before-graph"></svg>
+                            </div>
+                        </div>
+                        <div id="after-simplification">
+                            <h4>Simplified Payouts</h4>
+                            <div class="graph-container">
+                                <svg id="after-graph"></svg>
+                            </div>
+                            <h5 class="list-header">Transaction List:</h5>
+                            <ul class="results-list"></ul>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="button-group">
-                    <button id="start-button">Start</button>
-                    <button id="stop-button" disabled>Stop</button>
-                    <button id="reset-button" class="danger">Reset</button>
-                </div>
+            </div>
+        </section>
 
-                <div class="info-box">
-                    For stability, <strong>Discharge Rate</strong> should be higher than a lane's <strong>Arrival Rate</strong>.
+        <!-- ========= Savings Planner Section (Initially Hidden) ========= -->
+        <section id="savings-planner" class="hidden">
+             <div class="feature-container">
+                <div class="input-panel card">
+                    <h3>Your Savings Plan</h3>
+                    <div class="form-group">
+                        <label for="monthly-savings">Monthly Savings Amount ($)</label>
+                        <input type="number" id="monthly-savings" placeholder="e.g., 500">
+                    </div>
+                    <h4>Add Your Goals</h4>
+                    <form id="goal-form">
+                        <input type="text" id="goal-name" placeholder="Goal Name" required>
+                        <input type="number" id="goal-amount" placeholder="Target ($)" required>
+                        <input type="date" id="goal-deadline" required>
+                        <button type="submit" class="btn-add">Add Goal</button>
+                    </form>
+                    <ul id="goal-list" class="item-list"></ul>
+                    <button id="plan-savings" class="btn-calculate">Generate Savings Plans</button>
+                </div>
+                <div class="output-panel card">
+                    <h3>Recommended Strategies</h3>
+                    <div id="savings-results">
+                         <p class="placeholder-text">Enter your savings and goals to see the recommended plans.</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="simulation-container">
-                <canvas id="intersection-canvas" width="600" height="600"></canvas>
-            </div>
-
-            <div class="panel metrics">
-                <h2>Metrics</h2>
-                <div class="metric-group">
-                    <p><span>Simulation Time:</span> <strong id="sim-time">0s</strong></p>
-                    <p><span>Avg. Wait Time:</span> <strong id="avg-wait-time">0.00s</strong></p>
-                    <p><span>Total Throughput:</span> <strong id="total-throughput">0</strong></p>
-                    <p><span>Max Queue Length:</span> <strong id="max-queue-length">0</strong></p>
-                    <p><span>Signal Switches:</span> <strong id="signal-switches">0</strong></p>
-                </div>
-                <div class="queue-lengths">
-                    <h3>Live Queue Lengths</h3>
-                    <p><span>North:</span> <strong id="north-queue">0</strong></p>
-                    <p><span>East:</span> <strong id="east-queue">0</strong></p>
-                    <p><span>South:</span> <strong id="south-queue">0</strong></p>
-                    <p><span>West:</span> <strong id="west-queue">0</strong></p>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="script.js"></script>
+        </section>
+    </main>
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
