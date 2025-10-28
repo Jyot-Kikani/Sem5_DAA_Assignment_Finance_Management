@@ -35,7 +35,7 @@ export function initSavingsPlanner() {
         goals.forEach((goal, index) => {
             const li = document.createElement('li');
             li.innerHTML = `
-                <span>${goal.name} - $${goal.amount} (by ${goal.deadline.toLocaleDateString()})</span>
+                <span>${goal.name} - ₹${goal.amount} (by ${goal.deadline.toLocaleDateString()})</span>
                 <button data-index="${index}">Remove</button>
             `;
             goalList.appendChild(li);

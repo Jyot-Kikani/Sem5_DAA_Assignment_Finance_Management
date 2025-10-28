@@ -32,13 +32,13 @@
                 <div class="input-panel card">
                     <h3>Your Financials</h3>
                     <div class="form-group">
-                        <label for="total-budget">Total Monthly Budget ($)</label>
+                        <label for="total-budget">Total Monthly Budget (₹)</label>
                         <input type="number" id="total-budget" placeholder="e.g., 2000">
                     </div>
                     <h4>Add Your Expenses</h4>
                     <form id="expense-form">
                         <input type="text" id="expense-name" placeholder="Expense Name (e.g., Rent)" required>
-                        <input type="number" id="expense-amount" placeholder="Amount ($)" required>
+                        <input type="number" id="expense-amount" placeholder="Amount (₹)" required>
                         <input type="number" id="expense-priority" placeholder="Priority (1-10)" min="1" max="10" required>
                         <button type="submit" class="btn-add">Add</button>
                     </form>
@@ -68,7 +68,7 @@
                     <h4>Add Group Transaction</h4>
                     <form id="transaction-form">
                         <select id="paid-by-select"></select>
-                        <input type="number" id="transaction-amount" placeholder="Amount ($)" required>
+                        <input type="number" id="transaction-amount" placeholder="Amount (₹)" required>
                         <p class="form-instruction">Split Between:</p>
                         <div id="split-between-members"></div>
                         <button type="submit" class="btn-add wide">Add Transaction</button>
@@ -103,13 +103,13 @@
                 <div class="input-panel card">
                     <h3>Your Savings Plan</h3>
                     <div class="form-group">
-                        <label for="monthly-savings">Monthly Savings Amount ($)</label>
+                        <label for="monthly-savings">Monthly Savings Amount (₹)</label>
                         <input type="number" id="monthly-savings" placeholder="e.g., 500">
                     </div>
                     <h4>Add Your Goals</h4>
                     <form id="goal-form">
                         <input type="text" id="goal-name" placeholder="Goal Name" required>
-                        <input type="number" id="goal-amount" placeholder="Target ($)" required>
+                        <input type="number" id="goal-amount" placeholder="Target (₹)" required>
                         <input type="date" id="goal-deadline" required>
                         <button type="submit" class="btn-add">Add Goal</button>
                     </form>

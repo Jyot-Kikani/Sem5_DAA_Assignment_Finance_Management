@@ -25,7 +25,7 @@ export function initBudgetPlanner() {
         expenses.forEach((exp, index) => {
             const li = document.createElement('li');
             li.innerHTML = `
-                <span>${exp.name} - $${exp.amount} (Priority: ${exp.priority})</span>
+                <span>${exp.name} - ₹${exp.amount} (Priority: ${exp.priority})</span>
                 <button data-index="${index}">Remove</button>
             `;
             expenseList.appendChild(li);
@@ -85,15 +85,15 @@ export function initBudgetPlanner() {
     function displayResults(selected, cost, priority, budget) {
         resultsDiv.innerHTML = `
             <h3>Your Optimized Budget</h3>
-            <p><strong>Total Spent:</strong> $${cost} / $${budget}</p>
+            <p><strong>Total Spent:</strong> ₹${cost} / ₹${budget}</p>
             <p><strong>Total Priority Score:</strong> ${priority}</p>
-            <p><strong>Savings:</strong> $${budget - cost}</p>
+            <p><strong>Savings:</strong> ₹${budget - cost}</p>
             <h4>Included Expenses:</h4>
         `;
         const includedList = document.createElement('ul');
         selected.forEach(item => {
             const li = document.createElement('li');
-            li.textContent = `${item.name} - $${item.amount} (Priority: ${item.priority})`;
+            li.textContent = `${item.name} - ₹${item.amount} (Priority: ${item.priority})`;
             includedList.appendChild(li);
         });
         resultsDiv.appendChild(includedList);
@@ -107,7 +107,7 @@ export function initBudgetPlanner() {
             excluded.forEach(item => {
                 const li = document.createElement('li');
                 li.style.color = '#777';
-                li.textContent = `${item.name} - $${item.amount} (Priority: ${item.priority})`;
+                li.textContent = `${item.name} - ₹${item.amount} (Priority: ${item.priority})`;
                 excludedList.appendChild(li);
             });
             resultsDiv.appendChild(excludedList);

@@ -124,7 +124,7 @@ export function initDebtSimplifier() {
         }
         simplifiedTransactions.forEach(({ from, to, amount }) => {
             const li = document.createElement('li');
-            li.textContent = `${from} pays $${amount.toFixed(2)} to ${to}`;
+            li.textContent = `${from} pays ₹${amount.toFixed(2)} to ${to}`;
             afterList.appendChild(li);
         });
     }
@@ -190,7 +190,7 @@ export function initDebtSimplifier() {
         const linkLabel = svg.append("g").selectAll(".link-label")
             .data(links).enter().append("text")
             .attr("class", "link-label")
-            .text(d => `$${d.amount.toFixed(2)}`);
+            .text(d => `₹${d.amount.toFixed(2)}`);
 
         const node = svg.append("g").attr("class", "nodes").selectAll("g")
             .data(nodes).enter().append("g");
