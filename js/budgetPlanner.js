@@ -53,7 +53,7 @@ export function initBudgetPlanner() {
 
     function knapsack(items, capacity) {
         const n = items.length;
-        const dp = Array(n + 1).fill(0).map(() => Array(capacity + 1).fill(0));
+        const dp = Array(n + 1).fill(0).map(() => Array(capacity + 1).fill(0)); // tabulation
 
         for (let i = 1; i <= n; i++) {
             const { amount, priority } = items[i - 1];

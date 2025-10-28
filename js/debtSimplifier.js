@@ -34,7 +34,6 @@ export function initDebtSimplifier() {
             transactionForm.reset();
             renderMembers(); // Re-render to reset checkboxes
 
-            // --- KEY CHANGE: Update the "before" graph in real-time ---
             updateBeforeGraph(); 
         }
     });
@@ -53,10 +52,6 @@ export function initDebtSimplifier() {
         });
     }
 
-    /**
-     * Calculates the raw debts from all transactions and renders the "before" graph.
-     * This function now aggregates debts between the same two people for a cleaner view.
-     */
     function updateBeforeGraph() {
         const debtMap = new Map(); // Use a map to aggregate debts
 
@@ -103,7 +98,7 @@ export function initDebtSimplifier() {
         // Ensure the "before" graph is up-to-date
         updateBeforeGraph();
         
-        // --- Calculate and Render "After" Graph & List ---
+        // Calculate and Render "After" Graph & List
         const netBalance = new Map(members.map(m => [m, 0]));
         transactions.forEach(({ paidBy, amount, splitAmong }) => {
             const share = amount / splitAmong.length;
